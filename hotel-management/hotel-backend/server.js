@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const multer = require("multer");
 const path = require("path");
 const authAdmin = require("./authAdmin");
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
@@ -15,11 +16,13 @@ app.use("/payments", express.static("payments"));
 
 /* ================= DB ================= */
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Balaji@1",
-  database: "hotel_db"
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT
 });
+
 
 db.connect(err => {
   if (err) console.error(err);
