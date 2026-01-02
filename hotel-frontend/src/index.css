@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+/* ===== HERO ===== */
+.hero-section{
+  position:relative;
+  height: 90vh;
+  width:100%;
+  background:url("https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg") center/cover no-repeat;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,.65);
+  backdrop-filter: blur(3px);
+}
+
+.hero-content{
+  position:relative;
+  text-align:center;
+  color:#fff;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.hero-title{
+  font-size:3.8rem;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.hero-subtitle{
+  font-size:1.2rem;
+  margin-top:10px;
+  opacity:.9;
+}
+
+/* BUTTON */
+.book-btn{
+  margin-top:25px;
+  background:#ffc107;
+  color:#000;
+  font-size:18px;
+  padding:12px 32px;
+  border-radius:40px;
+  border:none;
+  box-shadow:0 10px 30px rgba(255,193,7,.6);
+  transition:.3s;
+}
+
+.book-btn:hover{
+  transform: scale(1.05);
+  box-shadow:0 15px 45px rgba(255,193,7,.9);
+}
+
+/* Animation */
+@keyframes fadeIn{
+  from{opacity:0; transform: translateY(20px);}
+  to{opacity:1; transform: translateY(0);}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero-title{font-size:2.2rem;}
+  .hero-subtitle{font-size:1rem;}
+}
