@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
-
+import API_BASE_URL from "../config";
 export default function Login(){
 
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
 
   function login(){
-    axios.post("http://localhost:5000/login",{
+    axios.post(`${API_BASE_URL}/login`,{
       email,
       password
     })

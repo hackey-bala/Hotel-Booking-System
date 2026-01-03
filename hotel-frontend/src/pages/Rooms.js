@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import API_BASE_URL from "../config";
 export default function Rooms() {
 
   const [rooms, setRooms] = useState([]);
@@ -13,7 +13,7 @@ export default function Rooms() {
 
   // LOAD ROOMS
   const loadRooms = () => {
-    axios.get("http://localhost:5000/rooms", {
+    axios.get(`${API_BASE_URL}/rooms`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setRooms(res.data))
@@ -27,7 +27,7 @@ export default function Rooms() {
 
   // FILTER
   const filterRooms = () => {
-    axios.get("http://localhost:5000/filter-rooms", {
+    axios.get(`${API_BASE_URL}/filter-rooms`, {
       params: {
         search,
         min,
@@ -113,7 +113,7 @@ export default function Rooms() {
               {/* IMAGE */}
               {r.image && (
                 <img
-                  src={`http://localhost:5000/uploads/${r.image}`}
+                  src={`${API_BASE_URL}/uploads/${r.image}`}
                   className="card-img-top"
                   height="200"
                   alt="room"

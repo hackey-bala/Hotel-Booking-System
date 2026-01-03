@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-
+import API_BASE_URL from "../config";
 export default function AdminLogin(){
   const [form, setForm] = useState({
   username: "",
@@ -12,7 +12,7 @@ export default function AdminLogin(){
 
   function loginAdmin(){
 
-    axios.post("http://localhost:5000/admin/login",{
+    axios.post(`${API_BASE_URL}/admin/login`,{
       username,
       password
     })

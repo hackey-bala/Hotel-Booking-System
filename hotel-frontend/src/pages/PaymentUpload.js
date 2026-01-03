@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-
+import API_BASE_URL from "../config";
 export default function PaymentUpload({ bookingId }) {
 
   const [image, setImage] = useState(null);
@@ -13,7 +13,7 @@ export default function PaymentUpload({ bookingId }) {
     fd.append("payment", image);
 
     axios.post(
-      `http://localhost:5000/upload-payment/${bookingId}`,
+      `${API_BASE_URL}/upload-payment/${bookingId}`,
       fd,
       { headers: { "Content-Type": "multipart/form-data" } }
     ).then(() => {

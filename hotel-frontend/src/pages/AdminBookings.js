@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import API_BASE_URL from "../config";
 export default function AdminBookings(){
 
   const [bookings,setBookings] = useState([]);
@@ -8,7 +8,7 @@ export default function AdminBookings(){
 
 
   const loadBookings = ()=>{
-    axios.get("http://localhost:5000/admin/bookings",{
+    axios.get(`${API_BASE_URL}/admin/bookings`,{
       headers:{ Authorization: `Bearer ${token}` }
     })
     .then(res => setBookings(res.data))
@@ -21,7 +21,7 @@ export default function AdminBookings(){
 
   // APPROVE BOOKING
   const approveBooking = (id)=>{
-    axios.put(`http://localhost:5000/admin/approve/${id}`,{},{
+    axios.put(`${API_BASE_URL}/admin/approve/${id}`,{},{
       headers:{ Authorization: `Bearer ${token}` }
     })
     .then(()=>{
@@ -35,7 +35,7 @@ export default function AdminBookings(){
   const rejectBooking = (id)=>{
     if(!window.confirm("Reject Booking?")) return;
 
-    axios.put(`http://localhost:5000/admin/reject/${id}`,{},{
+    axios.put(`${API_BASE_URL}/admin/reject/${id}`,{},{
       headers:{ Authorization: `Bearer ${token}` }
     })
     .then(()=>{
@@ -49,7 +49,7 @@ export default function AdminBookings(){
   const deleteBooking = (id)=>{
     if(!window.confirm("Delete booking permanently?")) return;
 
-    axios.delete(`http://localhost:5000/admin/bookings/${id}`,{
+    axios.delete(`${API_BASE_URL}/admin/bookings/${id}`,{
       headers:{ Authorization: `Bearer ${token}` }
     })
     .then(()=>{

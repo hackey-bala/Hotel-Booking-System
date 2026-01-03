@@ -2,7 +2,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import PaymentUpload from "./PaymentUpload";
-
+import API_BASE_URL from "../config";
 export default function Booking() {
 
   const { id } = useParams();
@@ -13,7 +13,7 @@ export default function Booking() {
   const [bookingId, setBookingId] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/rooms")
+    axios.get(`${API_BASE_URL}/rooms`)
       .then(res => {
         const r = res.data.find(x => x.id == id);
         setRoom(r);
@@ -25,7 +25,7 @@ export default function Booking() {
     if (!customerName || !checkIn || !checkOut)
       return alert("Fill all details");
 
-    axios.post("http://localhost:5000/book", {
+    axios.post(`${API_BASE_URL}/book`, {
       customerName,
       roomId: id,
       checkIn,

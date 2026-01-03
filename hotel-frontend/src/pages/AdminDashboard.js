@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import API_BASE_URL from "../config";
 export default function AdminDashboard(){
 
   const [rooms,setRooms] = useState([]);
@@ -13,7 +13,7 @@ export default function AdminDashboard(){
 
   // LOAD ROOMS
   const loadRooms = ()=>{
-    axios.get("http://localhost:5000/admin/rooms",{
+    axios.get(`${API_BASE_URL}/admin/rooms`,{
       headers:{ Authorization:`Bearer ${token}` }
     })
     .then(res=>setRooms(res.data));
@@ -35,7 +35,7 @@ export default function AdminDashboard(){
     fd.append("capacity",form.capacity);
     fd.append("image",form.image);
 
-    axios.post("http://localhost:5000/admin/rooms",fd,{
+    axios.post(`${API_BASE_URL}/admin/rooms`,fd,{
       headers:{
         Authorization:`Bearer ${token}`,
         "Content-Type":"multipart/form-data"
@@ -72,7 +72,7 @@ export default function AdminDashboard(){
       fd.append("image",form.image);
     }
 
-    axios.put(`http://localhost:5000/admin/rooms/${editId}`,fd,{
+    axios.put(`${API_BASE_URL}/admin/rooms/${editId}`,fd,{
       headers:{
         Authorization:`Bearer ${token}`,
         "Content-Type":"multipart/form-data"
@@ -91,7 +91,7 @@ export default function AdminDashboard(){
   const deleteRoom = id =>{
     if(!window.confirm("Delete Room?")) return;
 
-    axios.delete(`http://localhost:5000/admin/rooms/${id}`,{
+    axios.delete(`${API_BASE_URL}/admin/rooms/${id}`,{
       headers:{ Authorization:`Bearer ${token}` }
     })
     .then(()=>{

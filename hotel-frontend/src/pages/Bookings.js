@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
+import API_BASE_URL from "../config";
 export default function Bookings() {
 
   const [bookings, setBookings] = useState([]);
@@ -9,7 +9,7 @@ export default function Bookings() {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
 
-    axios.get(`http://localhost:5000/user/bookings/${userId}`)
+    axios.get(`${API_BASE_URL}/user/bookings/${userId}`)
       .then(res => {
         console.log("BOOKINGS RESPONSE:", res.data);
 
@@ -30,7 +30,7 @@ export default function Bookings() {
   }, []);
 
   function cancelBooking(id){
-    axios.put(`http://localhost:5000/cancel-booking/${id}`)
+    axios.put(`${API_BASE_URL}/cancel-booking/${id}`)
     .then(()=>{
       alert("Booking Cancelled");
       window.location.reload();

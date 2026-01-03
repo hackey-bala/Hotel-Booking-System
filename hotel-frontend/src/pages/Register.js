@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import API_BASE_URL from "../config";
 export default function Register(){
 
   const [name,setName] = useState("");
@@ -9,7 +9,7 @@ export default function Register(){
 
   function registerUser(){
 
-    axios.post("http://localhost:5000/register",{
+    axios.post(`${API_BASE_URL}/register`,{
         name,
         email,
         password

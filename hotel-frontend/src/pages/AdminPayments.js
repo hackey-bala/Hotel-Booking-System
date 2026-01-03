@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AdminNavbar from "../components/AdminNavbar";
-
+import API_BASE_URL from "../config";
 export default function AdminPayments(){
 
   const [payments,setPayments] = useState([]);
@@ -10,7 +10,7 @@ export default function AdminPayments(){
   const token = localStorage.getItem("adminToken");
 
   const loadPayments = ()=>{
-    axios.get("http://localhost:5000/admin/payments",{
+    axios.get(`${API_BASE_URL}/admin/payments`,{
       headers:{ Authorization:`Bearer ${token}` }
     })
     .then(res=>setPayments(res.data));
@@ -19,7 +19,7 @@ export default function AdminPayments(){
   useEffect(()=>{ loadPayments(); },[]);
 
   const approve = (id)=>{
-    axios.put(`http://localhost:5000/admin/payment/approve/${id}`,{},{
+    axios.put(`${API_BASE_URL}/admin/payment/approve/${id}`,{},{
       headers:{ Authorization:`Bearer ${token}` }
     })
     .then(()=>{
@@ -29,7 +29,7 @@ export default function AdminPayments(){
   };
 
   const reject = (id)=>{
-    axios.put(`http://localhost:5000/admin/payment/reject/${id}`,{},{
+    axios.put(`${API_BASE_URL}/admin/payment/reject/${id}`,{},{
       headers:{ Authorization:`Bearer ${token}` }
     })
     .then(()=>{
@@ -116,7 +116,7 @@ export default function AdminPayments(){
             onClick={()=>setPopup(null)}
           >
             <img
-              src={`http://localhost:5000/payments/${popup}`}
+              src={`${API_BASE_URL}/payments/${popup}`}
               style={{maxHeight:"90%",borderRadius:"10px"}}
               alt="proof"
             />
