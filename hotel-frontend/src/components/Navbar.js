@@ -6,6 +6,8 @@ function Navbar(){
 
   function logout(){
     localStorage.removeItem("userToken");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userName");
     alert("Logged Out");
     window.location = "/";
   }

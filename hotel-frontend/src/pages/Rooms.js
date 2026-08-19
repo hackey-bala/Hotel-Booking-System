@@ -22,6 +22,7 @@ export default function Rooms() {
 
   useEffect(() => {
     loadRooms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 

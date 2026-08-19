@@ -15,7 +15,10 @@ export default function AdminBookings(){
     .catch(err => console.log(err));
   };
 
-  useEffect(()=>{ loadBookings(); },[]);
+  useEffect(()=>{
+    loadBookings();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
 
 

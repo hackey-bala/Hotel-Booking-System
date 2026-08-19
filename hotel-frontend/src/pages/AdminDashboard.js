@@ -19,7 +19,10 @@ export default function AdminDashboard(){
     .then(res=>setRooms(res.data));
   };
 
-  useEffect(()=>{ loadRooms(); },[]);
+  useEffect(()=>{
+    loadRooms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
 
   const handleChange = e =>{

@@ -15,10 +15,10 @@ export default function Booking() {
   useEffect(() => {
     axios.get(`${API_BASE_URL}/rooms`)
       .then(res => {
-        const r = res.data.find(x => x.id == id);
+        const r = res.data.find(x => String(x.id) === String(id));
         setRoom(r);
-      })
-  }, []);
+      });
+  }, [id]);
 
   function book() {
 

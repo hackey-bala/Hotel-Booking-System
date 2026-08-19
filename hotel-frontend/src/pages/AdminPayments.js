@@ -16,7 +16,10 @@ export default function AdminPayments(){
     .then(res=>setPayments(res.data));
   };
 
-  useEffect(()=>{ loadPayments(); },[]);
+  useEffect(()=>{
+    loadPayments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
 
   const approve = (id)=>{
     axios.put(`${API_BASE_URL}/admin/payment/approve/${id}`,{},{

@@ -2,11 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import API_BASE_URL from "../config";
 export default function AdminLogin(){
-  const [form, setForm] = useState({
-  username: "",
-  password: ""
-});
-
   const [username,setUsername] = useState("");
   const [password,setPassword] = useState("");
 
