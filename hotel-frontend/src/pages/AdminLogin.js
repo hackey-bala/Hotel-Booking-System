@@ -22,8 +22,9 @@ export default function AdminLogin(){
         }
     })
     .catch(err =>{
-        console.log(err);
-        alert("Backend Error");
+        console.error("Admin Login Error:", err);
+        const errorMsg = err.response?.data?.message || err.response?.data?.error || err.message || "Cannot reach backend server";
+        alert(`Login Error: ${errorMsg}\n\nPlease check if your backend server is running.`);
     });
 
   }
